@@ -1,0 +1,39 @@
+name: CI/CD Pipeline for AWS Databricks
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  databricks-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Install Databricks CLI
+    - name: Install Databricks CLI
+      run: |
+        pip install databricks-cli
+
+    # Set up Databricks CLI
+    - name: Configure Databricks CLI
+      env:
+        DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+        DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+      run: |
+        databricks configure --token <<EOF
+        $DATABRICKS_HOST
+        $DATABRICKS_TOKEN
+        EOF
+
+    # Deploy to Databricks
+    - name: Deploy Notebook
+      run: |
+        databricks workspace import_dir <local-notebooks-dir> <databricks-workspace-path> --overwrite
