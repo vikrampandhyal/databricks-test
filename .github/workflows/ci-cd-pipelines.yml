@@ -37,4 +37,4 @@ jobs:
     # Deploy to Databricks
     - name: Deploy Notebook
       run: |
-        databricks workspace import_dir <local-notebooks-dir> <databricks-workspace-path> --overwrite
+        databricks workspace import_dir databricks-test /Workspace/Users/vikram.pandhyal@bitsinglass.com/myproject --overwrite
