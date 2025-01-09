@@ -21,14 +21,6 @@ jobs:
     - name: List files
       run: ls -R
 
-    # Unzip workflows.zip if necessary
-    - name: Unzip workflows.zip
-      run: unzip workflows.zip -d .
-
-    # List files after unzipping
-    - name: List files after unzip
-      run: ls -R
-
     # Install Databricks CLI
     - name: Install Databricks CLI
       run: pip install databricks-cli
