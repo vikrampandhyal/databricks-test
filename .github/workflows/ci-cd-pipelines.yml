@@ -1,11 +1,7 @@
-
 name: CI/CD Pipeline for AWS Databricks
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
     branches:
       - main
 
@@ -17,13 +13,19 @@ jobs:
     # Checkout the repository
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        clean: false
+        fetch-depth: 0
+
+    # List files for debugging
+    - name: List files after checkout
+      run: ls -R
 
     # Install Databricks CLI
     - name: Install Databricks CLI
-      run: |
-        pip install databricks-cli
+      run: pip install databricks-cli
 
-    # Set up Databricks CLI
+    # Configure Databricks CLI
     - name: Configure Databricks CLI
       env:
         DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
@@ -35,6 +37,6 @@ jobs:
         EOF
 
     # Deploy to Databricks
-    - name: Deploy Notebook
+    - name: Deploy Notebooks
       run: |
-        databricks workspace import_dir vikrampandhyal/databricks-test /Workspace/Users/vikram.pandhyal@bitsinglass.com/myproject --overwrite
+        databricks workspace import_dir ./databricks-test /Workspace/Users/vikram.pandhyal@bitsinglass.com/myproject --overwrite
