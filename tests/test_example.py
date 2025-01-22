@@ -8,7 +8,7 @@
      "cellMetadata": {},
      "inputWidgets": {},
      "nuid": "815723e1-ec0e-4407-8f3b-41047028574f",
-     "showTitle": false,
+     "showTitle": False,
      "tableResultSettingsMap": {},
      "title": ""
     }
