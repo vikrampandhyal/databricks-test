@@ -52,7 +52,7 @@ jobs:
         EOF
      # Step 4: Run tests
     - name: Run Tests
-      run: pytest tests/
+      run: pytest /home/runner/work/databricks-test/databricks-test/tests/
 
     # Deploy to Databricks
     - name: Deploy Notebooks
