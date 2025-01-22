@@ -38,6 +38,9 @@ jobs:
         $DATABRICKS_HOST
         $DATABRICKS_TOKEN
         EOF
+     # Step 4: Run tests
+    - name: Run Tests
+      run: pytest tests/
 
     # Deploy to Databricks
     - name: Deploy Notebooks
