@@ -33,7 +33,7 @@
  ],
  "metadata": {
   "application/vnd.databricks.v1+notebook": {
-   "computePreferences": null,
+   "computePreferences": None,
    "dashboards": [],
    "environmentMetadata": {
     "base_environment": "",
